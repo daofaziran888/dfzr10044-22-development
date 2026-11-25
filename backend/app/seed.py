@@ -530,4 +530,33 @@ SEED_ROWS: dict[str, list[dict[str, Any]]] = {
             "操作者标识": "data_eng_02", "操作时间": "2026-11-02T12:00:00",
         },
     ],
+    "recovery_evidence": [
+        {
+            "id": 1, "status": "已受理", "pending": True, "abnormal": False,
+            "证据编号": "RECV-EVD-001", "所属库域": "lake_ods",
+            "湖表标识": "tbl-lake_ods-sales", "湖表名称": "sales",
+            "快照标识": "snap-sales-ods-0001", "分区清单": "dt=20261101,dt=20261102",
+            "文件清单": "7个分区文件", "证据状态": "已受理",
+            "恢复作业": "", "受理时间": "2026-11-20T09:00:00",
+            "已读文件数": 0, "待补文件数": 7,
+        },
+        {
+            "id": 2, "status": "待受理", "pending": True, "abnormal": False,
+            "证据编号": "RECV-EVD-002", "所属库域": "lake_dwd",
+            "湖表标识": "tbl-lake_dwd-sales", "湖表名称": "sales",
+            "快照标识": "snap-sales-dwd-0001", "分区清单": "dt=20261101,dt=20261102,dt=20261103",
+            "文件清单": "11个分区文件", "证据状态": "待受理",
+            "恢复作业": "", "受理时间": "2026-11-20T09:05:00",
+            "已读文件数": 0, "待补文件数": 11,
+        },
+        {
+            "id": 3, "status": "已恢复", "pending": False, "abnormal": False,
+            "证据编号": "RECV-EVD-003", "所属库域": "lake_ods",
+            "湖表标识": "tbl-lake_ods-ods_user_behavior", "湖表名称": "ods_user_behavior",
+            "快照标识": "SNAP-ODS-002", "分区清单": "dt=20261101",
+            "文件清单": "2个分区文件", "证据状态": "已恢复",
+            "恢复作业": "recjob-demo-003", "受理时间": "2026-11-18T02:00:00",
+            "已读文件数": 2, "待补文件数": 0,
+        },
+    ],
 }

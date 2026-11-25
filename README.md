@@ -16,6 +16,8 @@
 │   └── vite.config.ts        dev server 配置（open: false）
 ├── backend/                  FastAPI（Python） 后端
 │   ├── app/routers/resource.py  通用查询/导出/登记/动作接口
+│   ├── app/routers/recovery.py  恢复证据专用接口 /api/recovery/*
+│   ├── app/recovery/            恢复证据清单、恢复作业与回收协调领域
 │   ├── app/services/<key>.py    每个模块独立领域逻辑
 │   ├── app/services/base.py     共享服务骨架
 │   └── app/store.py          内存数据仓库与示例数据
@@ -72,6 +74,13 @@ npm run dev
 | 消费视图 | `publish_view` | 消费视图 | 视图编号、所属湖表、视图定义 |
 | 资源额度计量 | `quota_meter` | 额度读数 | 读数编号、所属湖表、额度类型 |
 | 湖表审计 | `lake_audit` | 审计条目 | 条目编号、所属湖表、操作类型 |
+| 恢复证据 | `recovery_evidence` | 恢复证据条目 | 证据编号、所属库域、湖表标识、快照标识 |
+
+恢复证据领域另有独立实现与专用路由（不走通用资源 CRUD）：
+
+- `backend/app/recovery/`：恢复证据清单受理、恢复作业领取、断点续读、快照范围校验与恢复概览
+- `backend/app/routers/recovery.py`：`/api/recovery/*` 专用接口，含湖表改名、清单领取、作业暂停/恢复、旧版文件回收与持有者查询
+- 前端 `RecoveryConsole.vue`（路由 `/recovery-console`）：恢复作业控制台
 
 ## 约定
 
